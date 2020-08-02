@@ -327,16 +327,11 @@ if [[ -n "${LOCAL_NETWORK-}" ]]; then
   fi
 fi
 
-# If routes-post-start.sh exists, run it
-if [[ -x /scripts/routes-post-start.sh ]]; then
-  echo "Executing /scripts/routes-post-start.sh"
-  /scripts/routes-post-start.sh "$@"
-  echo "/scripts/routes-post-start.sh returned $?"
-fi
 
 if [[ ${SELFHEAL:-false} != "false" ]]; then
   /etc/scripts/selfheal.sh &
 fi
 
 # shellcheck disable=SC2086
-exec openvpn ${TRANSMISSION_CONTROL_OPTS} ${OPENVPN_OPTS} --config "${CHOSEN_OPENVPN_CONFIG}"
+exec myopenvpn ${TRANSMISSION_CONTROL_OPTS} ${OPENVPN_OPTS} --config "${CHOSEN_OPENVPN_CONFIG}"
+

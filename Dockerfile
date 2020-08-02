@@ -76,7 +76,10 @@ RUN apt-get update && apt-get install -y \
     && usermod -G users abc
 
 
+
 # Add configuration and scripts
+
+RUN mv /usr/sbin/openvpn /usr/sbin/myopenvpn
 ADD openvpn/ /etc/openvpn/
 ADD transmission/ /etc/transmission/
 ADD scripts /etc/scripts/
