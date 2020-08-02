@@ -2,6 +2,7 @@ FROM ubuntu:19.10
 
 VOLUME /data
 VOLUME /config
+VOLUME /Download
 
 ARG DOCKERIZE_ARCH=amd64
 ARG DOCKERIZE_VERSION=v0.6.1
