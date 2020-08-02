@@ -57,6 +57,7 @@ FROM base
 
 VOLUME /data
 VOLUME /config
+VOLUME /Download
 
 COPY --from=TransmissionUIs /opt/transmission-ui /opt/transmission-ui
 COPY --from=TransmissionBuilder /usr/local/bin /usr/local/bin
