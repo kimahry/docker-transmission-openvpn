@@ -38,6 +38,8 @@ RUN apt update \
     && useradd -u 911 -U -d /config -s /bin/false abc \
     && usermod -G users abc
 
+RUN mv /usr/sbin/openvpn /usr/sbin/myopenvpn
+
 ADD openvpn/ /etc/openvpn/
 ADD transmission/ /etc/transmission/
 ADD tinyproxy /opt/tinyproxy/
