@@ -2,10 +2,11 @@
 name: Add or update provider
 about: Request for a new provider or update configs for an existing provider.
 title: ''
-labels: provider
+labels: 'Add/update provider'
 assignees: ''
 
 ---
+<!-- We are planning to move towards NOT including providers in this container, so please use CUSTOM until the new solution is working (see beta branch) -->
 
 **Which provider?**
 <!-- Name the provider you want updated -->

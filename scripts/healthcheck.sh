@@ -11,7 +11,16 @@ then
     HOST="google.com"
 fi
 
-ping -c 1 $HOST
+# Check DNS resolution works
+nslookup $HOST > /dev/null
+STATUS=$?
+if [[ ${STATUS} -ne 0 ]]
+then
+    echo "DNS resolution failed"
+    exit 1
+fi
+
+ping -c 2 -w 10 $HOST # Get at least 2 responses and timeout after 10 seconds
 STATUS=$?
 if [[ ${STATUS} -ne 0 ]]
 then
@@ -26,13 +35,11 @@ echo "Network is up"
 OPENVPN=$(pgrep openvpn | wc -l )
 TRANSMISSION=$(pgrep transmission | wc -l)
 
-if [[ ${OPENVPN} -ne 1 ]]
-then
+if [[ ${OPENVPN} -ne 1 ]]; then
 	echo "Openvpn process not running"
 	exit 1
 fi
-if [[ ${TRANSMISSION} -ne 1 ]]
-then
+if [[ ${TRANSMISSION} -ne 1 ]]; then
 	echo "transmission-daemon process not running"
 	exit 1
 fi
